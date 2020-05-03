@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-web
+  labels:
+    run: simple-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: simple-web
+  template:
+    metadata:
+      labels:
+        run: simple-web
+    spec:
+      containers:
+      - name: simple-web-api
+        image: pksheldon4/simple-web-api
+        ports:
+        - containerPort: 8080
